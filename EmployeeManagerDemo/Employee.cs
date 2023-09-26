@@ -2,7 +2,7 @@
 
 namespace EmployeeManagerDemo
 {
-    public class Employee : Wage
+    public class Employee /*: Wage*/
     {
         public Employee() { }
 
