@@ -1,7 +1,11 @@
-﻿namespace EmployeeManagerDemo
+﻿using System.Text.RegularExpressions;
+
+namespace EmployeeManagerDemo
 {
-    public class Employee
+    public class Employee : Wage
     {
+        public Employee() { }
+
         public Employee(string employeeId, 
             string name, 
             double hoursWorked, 
@@ -21,10 +25,26 @@
 
         public double HourlyRate { get; set; }
 
-        public double CalculateWage()
+        public static bool IsNameValid(string name)
         {
-            return HoursWorked * HourlyRate;
-        }
+            if (string.IsNullOrEmpty(name))
+            {
+                return false;
+            }
+
+            int nameLength = name.Length;
+
+            if (nameLength >= 1 && nameLength <= 50)
+            {
+                // Name length is within the valid range (1 to 50 characters).
+                return true;
+            }
+            else
+            {
+                // Name length is outside the valid range.
+                return false;
+            }
+            }
 
         public override string? ToString()
         {
@@ -32,6 +52,20 @@
                 Name + " - " +
                 HoursWorked + " £" +
                 HourlyRate;
+        }
+
+        public  static bool IdIsValid(string employeeId)
+        {
+            string pattern = @"^[A-Za-z][0-9]{2}$";
+
+            if (Regex.IsMatch(employeeId, pattern))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
