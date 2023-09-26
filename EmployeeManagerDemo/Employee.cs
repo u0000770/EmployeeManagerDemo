@@ -2,7 +2,7 @@
 
 namespace EmployeeManagerDemo
 {
-    public class Employee /*: Wage*/
+    public class Employee 
     {
         public Employee() { }
 
@@ -48,9 +48,9 @@ namespace EmployeeManagerDemo
 
         public override string? ToString()
         {
-            return EmployeeId + ": " +
-                Name + " - " +
-                HoursWorked + " £" +
+            return EmployeeId + ": " 
+                + Name + " - " + 
+                "Hours: " + HoursWorked + " @ Rate of £" +
                 HourlyRate;
         }
 

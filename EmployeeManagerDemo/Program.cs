@@ -68,9 +68,11 @@ void ListEmployees()
     { 
         foreach (var person in employees)
         {
-            SendToOutput($"{person.EmployeeId} - {person.Name}");
+
+            SendToOutput(person.ToString());
             var wage = Wage.CalculateWage(HoursWorked: person.HoursWorked, HourlyRate: person.HourlyRate);
-            SendToOutput($"The weekly wage is £{wage:F2}");
+            SendToOutput($"Their weekly wage is £{wage:F2}");
+            
         }
     }
     else
