@@ -15,6 +15,11 @@ namespace EmployeeManagerDemo
             this.employees = employees;
         }
 
+        /// <summary>
+        /// Will not Add if ID already exists
+        /// </summary>
+        /// <param name="employee"></param>
+        /// <returns>True</returns>
         public bool AddEmployee(Employee employee)
         {
             var thisEmployee = FindById(employee.EmployeeId);
@@ -26,6 +31,7 @@ namespace EmployeeManagerDemo
             } else { return  false; }
         }
 
+
         public void RemoveEmployee(Employee employee)
         {
             var thisEmployee = FindById(employee.EmployeeId);
@@ -33,6 +39,11 @@ namespace EmployeeManagerDemo
             {
                 this.employees.Remove(employee);
             }
+        }
+
+        public Employee GetEmployeeById(string id)
+        {
+            return FindById(id);
         }
 
         public List<Employee> GetAllEmployees()
@@ -53,9 +64,6 @@ namespace EmployeeManagerDemo
             }
         }
 
-        public Employee GetEmployeeById(string id)
-        {
-            return FindById(id);
-        }
+    
     }
 }
