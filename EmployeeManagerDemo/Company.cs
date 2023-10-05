@@ -31,7 +31,6 @@ namespace EmployeeManagerDemo
             } else { return  false; }
         }
 
-
         public void RemoveEmployee(Employee employee)
         {
             var thisEmployee = FindById(employee.EmployeeId);

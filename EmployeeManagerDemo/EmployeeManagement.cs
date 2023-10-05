@@ -2,12 +2,12 @@
 {
     public class EmployeeManagement
     {
-        private readonly IInputOutput inputOutput;
-        private Company company { get; set; }
+        private IInputOutput inputOutput;
+        private Company Company { get; set; }
 
-       public EmployeeManagement(IInputOutput inputOutput,Company company) {
+        public EmployeeManagement(IInputOutput inputOutput,Company company) {
             this.inputOutput = inputOutput;
-            this.company = company;
+            this.Company = company;
         }
 
         public void AddEmployee()
@@ -18,7 +18,7 @@
             employee.EmployeeId = GetEmployeeId();
             employee.HoursWorked = GetHoursWorked();
             employee.HourlyRate = 9.5;
-            if (company.AddEmployee(employee))
+            if (Company.AddEmployee(employee))
             {
                 inputOutput.WriteOutput("Employee added successfully.");
             }
@@ -32,7 +32,7 @@
         public void ListEmployees()
         {
             inputOutput.WriteOutput("List of Employees:");
-            var employees = company.GetAllEmployees();
+            var employees = Company.GetAllEmployees();
             if (employees.Count > 0)
             {
                 foreach (var person in employees)
@@ -53,10 +53,10 @@
         public void RemoveEmployee()
         {
             inputOutput.WriteOutput("Enter the id of the employee to remove: ");
-            var employee = company.GetEmployeeById(GetEmployeeId());
+            var employee = Company.GetEmployeeById(GetEmployeeId());
             if (employee != null)
             {
-                company.RemoveEmployee(employee);
+                Company.RemoveEmployee(employee);
             }
             else
             {
@@ -72,7 +72,7 @@
             {
                 string hours = inputOutput.ReadInput("Hours Worked: ");
                 bool valid = double.TryParse(hours, out double hoursWorked);
-                if (valid && hoursWorked > 0 && hoursWorked <= 100)
+                if (valid && Employee.ValidEmployeeHours(hoursWorked))
                 {
                     return hoursWorked;
                 }

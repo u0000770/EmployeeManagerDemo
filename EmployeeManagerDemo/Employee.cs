@@ -54,7 +54,7 @@ namespace EmployeeManagerDemo
                 HourlyRate;
         }
 
-        public  static bool IdIsValid(string employeeId)
+        public static bool IdIsValid(string employeeId)
         {
             string pattern = @"^[A-Za-z][0-9]{2}$";
 
@@ -66,6 +66,13 @@ namespace EmployeeManagerDemo
             {
                 return false;
             }
+        }
+
+        public static bool ValidEmployeeHours(double hoursWorked)
+        {
+            if (hoursWorked > 0 && hoursWorked <= 100)
+                return true;
+            else return false;
         }
     }
 }
