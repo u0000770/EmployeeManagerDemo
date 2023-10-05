@@ -72,13 +72,13 @@
             {
                 string hours = inputOutput.ReadInput("Hours Worked: ");
                 bool valid = double.TryParse(hours, out double hoursWorked);
-                if (valid && Employee.ValidEmployeeHours(hoursWorked))
+                if (valid && Wage.HoursWorkedRule(hoursWorked))
                 {
                     return hoursWorked;
                 }
                 else
                 {
-                    inputOutput.WriteOutput("Invalid input for Hours Worked between 1 and 100 hours");
+                    inputOutput.WriteOutput("Invalid input for Hours Worked");
                 }
             }
         }

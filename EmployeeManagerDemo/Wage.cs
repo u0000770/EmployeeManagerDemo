@@ -31,7 +31,7 @@
             else { return false; }
         }
 
-        private static bool HoursWorkedRule(double HoursWorked)
+        public static bool HoursWorkedRule(double HoursWorked)
         {
             if (HoursWorked > 0 && HoursWorked <= 100)
             { return true; }
